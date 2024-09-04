@@ -2,7 +2,7 @@
 
 As a DevOps and Cloud Native Engineer, I need a personal playground to experiment in—without tinkering with client clusters! That’s why I set up my homelab and chronicled the journey on my blog [here](https://alfonsofortunato.com/posts/homelab/).
 
-The core principles for my blog are:
+The core principles for my homelab are:
 
 - Following GitOps best practices
 - Simulating real-world scenarios (dev/stage/prod cluster)
