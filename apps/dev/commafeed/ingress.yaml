@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: commafeed-ingress
+  namespace: commafeed
+  labels:
+    app.kubernetes.io/name: commafeed
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - commafeed.alfonsofortunato.net
+      secretName: commafeed-tls
+  rules:
+    - host: commafeed.alfonsofortunato.net
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: commafeed
+                port:
+                  number: 8082

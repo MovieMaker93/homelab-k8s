@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wallabag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wallabag
+  template:
+    metadata:
+      labels:
+        app: wallabag
+        policy-type: "app"
+    spec:
+      containers:
+        - name: wallabag
+          image: ghcr.io/wallabag/docker:2.6.9
+          # securityContext:
+          #   allowPrivilegeEscalation: false
+          envFrom:
+            - configMapRef:
+                name: wallabag-configmap
+            - secretRef:
+                name: wallabag-container-env
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always

@@ -1,0 +1,44 @@
+apiVersion: postgresql.k8s.enterprisedb.io/v1
+kind: Cluster
+metadata:
+  name: wallabag-db-production-v1
+spec:
+  description: Postgres cluster for the wallabag application
+  imageName: quay.io/enterprisedb/postgresql:16.1
+  instances: 3
+  monitoring:
+    enablePodMonitor: true
+  inheritedMetadata:
+    labels:
+      app: wallabag-database
+      policy-type: "database"
+  storage:
+    size: 2Gi
+  backup:
+    barmanObjectStore:
+      destinationPath: "https://dbstoragehomelabbackups.blob.core.windows.net/wallabag"
+      azureCredentials:
+        connectionString:
+          name: azure-creds
+          key: wallabag-connection-string
+          # storageAccount:
+          #   name: azure-creds
+          #   key: commafeed-storage-account-name
+          # storageSasToken:
+          #   name: azure-creds
+          #   key: commafeed-blob-sas
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+    retentionPolicy: 7d
+  bootstrap:
+    initdb:
+      database: wallabag
+      owner: wallabag
+      secret:
+        name: wallabag-db-creds
+  # handy: resources can be used to trigger a redeploy
+  resources:
+    requests:
+      memory: 300Mi

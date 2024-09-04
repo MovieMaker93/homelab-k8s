@@ -1,0 +1,42 @@
+apiVersion: postgresql.k8s.enterprisedb.io/v1
+kind: Cluster
+metadata:
+  name: commafeed-db-dev
+  namespace: commafeed
+spec:
+  description: Postgres cluster for the commafeed application
+  imageName: quay.io/enterprisedb/postgresql:16.1
+  instances: 3
+  monitoring:
+    enablePodMonitor: true
+  bootstrap:
+    initdb:
+      database: commafeed
+      owner: commafeed
+      secret:
+        name: commafeed-db-creds
+  backup:
+    barmanObjectStore:
+      destinationPath: "https://dbstoragehomelabbackups.blob.core.windows.net/commafeed"
+      azureCredentials:
+        connectionString:
+          name: azure-creds
+          key: commafeed-connection-string
+          # storageAccount:
+          #   name: azure-creds
+          #   key: commafeed-storage-account-name
+          # storageSasToken:
+          #   name: azure-creds
+          #   key: commafeed-blob-sas
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+    retentionPolicy: 7d
+  storage:
+    storageClass: local-path
+    size: 200Mi
+  # handy: resources can be used to trigger a redeploy
+  resources:
+    requests:
+      memory: 500Mi

@@ -1,0 +1,34 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: grafana
+spec:
+  chart:
+    spec:
+      chart: grafana
+      version: "8.4.4"
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: monitoring
+  values:
+    # You can override these with env variables! https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/
+    grafana.ini:
+      date_formats:
+        default_week_start: monday
+      security:
+        allow_embedding: true
+    adminPassword: strongpassword
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      tls:
+        - hosts:
+            - grafana-dev.alfonsofortunato.net
+          secretName: grafana-ingress-dev
+      hosts:
+        - grafana-dev.alfonsofortunato.net
+    plugins:
+      - grafana-strava-datasource

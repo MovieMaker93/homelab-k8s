@@ -1,0 +1,40 @@
+apiVersion: v1
+data:
+    password: ENC[AES256_GCM,data:/04miXNyCNeCMJ901WAxYDsWMUY0eVol,iv:yGtMBBSz9y3zw5IMdwkCdLmvJVvNpL7dMLnbeRL/wfA=,tag:u/LR6Ko3rWSsl0d3L5vVZQ==,type:str]
+    username: ENC[AES256_GCM,data:RpKEunobKffd7DpX,iv:CxyfwjAhM57M7J6x7TsUopdw1f+15ZnRGesQvjdqgqk=,tag:FdA1C1C2FC6XfBzWLgqmuQ==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: wallabag-superuser
+type: kubernetes.io/basic-auth
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-08-24T01:41:16Z"
+    mac: ENC[AES256_GCM,data:pr06/ZnEAivSZiPEruNp+tdTDLmz51YUXl7U0MCoTTcknwz46GT21WfHTna00kb/+wzsLq2A8hB2F3V4nxmf5mTZU6+XsbzwGX1Ru/suyr0cgyf36oIUiwSYMReFx3STv7k/sEB//lSLvs3uXQWcUdc0t4a/WdS6UKWAHcsIdwk=,iv:XVqwFZ8zF1xC1xtMCvaCSFNcV3zgLmcjCJjrKoDtd+Q=,tag:ZvP1nIauCdH7XH5Gioppiw==,type:str]
+    pgp:
+        - created_at: "2024-08-24T01:41:16Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA8qwe6i1ZONaAQ//a01KsDuDsG2afD83SCq7HyNSxWI/ubKWSOz0+dIKtpI6
+            kpMyc2jWfV9v1LczhzCZ38IFfYRT4J12bj6gGCT/eT2ev2hHBwpZAsBIYW84efDp
+            UXW/HjDBxYoo2hZerI+D7Rpm8IfFM8pERqR/k8e/aCVhW80rqGz2BQ9mKOKnGyWY
+            asWCRfaJ8zAcFHH8Aq1PuPtUhboDH+5DO8Uo7gl/q1nhPfYZpIXSSkFWa9HCvSk8
+            Fj/zzr3zYi59dwJ4r9EYfnKfB2USy5TUkkb89HBiiiV3lVMbjXlNiAtMyCBS5YnY
+            wYIhoPz0QshDh7ewtFX8j3dlqGYyJlI5kBu3kpGLB4H63ff82j5LkDIJyE/zHiqy
+            xcMDtLVdk14dp1VQiVLKdHi9oxtHX70be88JPkWi2pZ42JjkqaYMIUXvW/K2vOhT
+            IK3XWDRr2gwrnxQWskuT1u31YMHnqQi7qFRGi30eEKFMVRA4rb4cyBqHKeYRyu6V
+            I6tAZFopLASjgPuekrNx993HVcX4wrXcWP4mfprUjBTewqMW8fUbpjccf7NlbD64
+            JgNjvXGVvb1okNTnPSMvykKG3q7ku3HYFk6wVntcwfNK14XAMh0yuwSwB7J38Gpz
+            FU3RHDYh58HH0hsMRpy0d2yXoOuy5tfPr+liczNQfm2tufX7uK8oLGjdTOvtL1vS
+            XgH7LpFMsgGWNBkhcgX/UFvtWQ7pKVW7r6ZYUb4kSv/uudlQVDyZzczXmJXSctrX
+            uS7GXeilkBeOJ6peejIK0Y9X9R822ii3x14z9wqiwVoJDY8/pYoyigqoVhz+V3M=
+            =yyDg
+            -----END PGP MESSAGE-----
+          fp: 04661442D965867FFCD760A0F37B9C0904B63217
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.0

@@ -1,0 +1,42 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: unifi-controller
+  namespace: unifi
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: unifi-controller
+      version: "2.6.1"
+      sourceRef:
+        kind: HelmRepository
+        name: unifi
+        namespace: unifi
+      interval: 12h
+  values:
+    persistence:
+      backup:
+        enabled: false
+      enabled: true
+      sice: 4Gi
+      storageClass: local-path
+    ingress:
+      enabled: true
+      className: "nginx"
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      tls:
+        - hosts:
+            - unifi.alfonsofortunato.net
+          secretName: unifi-tls
+      hosts:
+        - host: unifi.alfonsofortunato.net
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+    service:
+      type: "ClusterIP"
+    environment:
+      timezone: "Europe/Rome"
+    # configuration to make dashboard configmaps discoverable
