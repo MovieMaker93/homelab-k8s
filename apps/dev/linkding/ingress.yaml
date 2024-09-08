@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: linkding-ingress
+  namespace: linkding
+  labels:
+    app.kubernetes.io/name: linkding
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - linkding.alfonsofortunato.net
+      secretName: linkding-tls
+  rules:
+    - host: linkding.alfonsofortunato.net
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: linkding
+                port:
+                  number: 3003

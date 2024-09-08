@@ -32,10 +32,36 @@ data:
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: |
-    - Developer:
+    - Skool Kubecraft:
+        - Skool:
+            - abbr: sk
+              href: https://www.skool.com/kubecraft
+    - Personal Blog:
+        - Blog:
+            - abbr: bl
+              href: https://alfonsofortunato.com
+              icon: si-devpost-#003E54
+    - Socials:
         - Github:
             - abbr: GH
               href: https://github.com/MovieMaker93
+              icon: github-light.png
+        - Linkedin:
+            - abbr: LN
+              href: https://www.linkedin.com/in/alfonso-fortunato-a37056b9/
+              icon: linkedin.png
+        - Twitter:
+            - abbr: X
+              href: https://x.com/devopsfortunato
+              icon: mdi-twitter
+        - Medium:
+            - abbr: M
+              href: https://medium.com/@alfor93
+              icon: si-medium-#000000
+        - Reddit:
+            - abbr: M
+              href: https://reddit.com/
+              icon: reddit.png
   services.yaml: |
     - Apps:
         - Wallabag:
@@ -46,6 +72,10 @@ data:
             href: https://commafeed.alfonsofortunato.net/
             description: Commafeed
             icon: commafeed.png
+        - Linkding:
+            href: https://linkding.alfonsofortunato.net/
+            description: Linkding
+            icon: linkding.png
     - Monitoring:
         - Grafana:
             href: https://grafana-dev.alfonsofortunato.net/
