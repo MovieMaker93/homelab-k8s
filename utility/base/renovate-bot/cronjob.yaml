@@ -17,7 +17,7 @@ spec:
             - name: renovate
               # Update this to the latest available and then enable Renovate on
               # the manifest
-              image: renovate/renovate:38.67.4
+              image: renovate/renovate:38.74.0
               volumeMounts:
                 - name: config-renovate
                   mountPath: /opt/renovate/
