@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: excalidraw
+  namespace: excalidraw
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: excalidraw
+  template:
+    metadata:
+      labels:
+        app: excalidraw
+    restartPolicy: always
+    spec:
+      volumes:
+        - name: excalidraw-data
+          persistentVolumeClaim:
+            claimName: excalidraw-data
+      # securityContext:
+      #   runAsUser: 1000
+      #   runAsGroup: 3000
+      #   fsGroup: 2000
+      containers:
+        - name: excalidraw
+          image: alfonsofortunato/excalidraw:arm
+          volumeMounts:
+            - mountPath: /app/excalidraw
+              name: excalidraw-data
+          # securityContext:
+          #   allowPrivilegeEscalation: false
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP

@@ -76,6 +76,10 @@ data:
             href: https://linkding.alfonsofortunato.net/
             description: Linkding
             icon: linkding.png
+        - Excalidraw:
+            href: https://excalidraw.alfonsofortunato.net/
+            description: Excalidraw
+            icon: excalidraw-light.png
     - Monitoring:
         - Grafana:
             href: https://grafana-dev.alfonsofortunato.net/
